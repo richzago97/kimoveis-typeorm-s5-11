@@ -11,12 +11,13 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    command: bash -c "yarn typeorm migration:run -d ./src/data-source && yarn dev"
     volumes:
       - .:/app
 
   db:
     container_name: db
-    image: postgres:14-alpine
+    image: postgres:14
     ports:
       - 5431:5432
     env_file:
@@ -27,5 +28,3 @@ services:
       timeout: 5s
       retries: 5
       start_period: 5s
-   
-
