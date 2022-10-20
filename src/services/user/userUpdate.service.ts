@@ -16,7 +16,6 @@ const userUpdateService = async (
     data.includes("isActive") ||
     data.includes("id")
   ) {
-    // return [{ message: "Not Possible update isAdm, isActive or ID" }, 401];
     throw new AppError("Not Possible update isAdm, isActive or ID", 401);
   }
 

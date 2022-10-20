@@ -1,26 +1,24 @@
 import AppDataSource from "../../data-source";
 import { Category } from "../../entities/categories.entity";
-import { Propertie } from "../../entities/properties.entity";
 import { AppError } from "../../errors/appError";
 
-const categoriesListProperties = async (id: string): Promise<Propertie[]> => {
-  const categoryRepository = AppDataSource.getRepository(Category);
+const categoriesListProperties = async (id: string): Promise<Category> => {
   try {
+    const categoryRepository = AppDataSource.getRepository(Category);
     const category = await categoryRepository.findOne({
       where: {
-        id: id,
+        id,
       },
       relations: {
         properties: true,
       },
     });
-    console.log(category);
 
     if (!category) {
-      throw new AppError("Category not found");
+      throw new AppError("Category not found", 404);
     }
 
-    return category.properties!;
+    return category;
   } catch (error) {
     throw new AppError("ID Invalid", 404);
   }

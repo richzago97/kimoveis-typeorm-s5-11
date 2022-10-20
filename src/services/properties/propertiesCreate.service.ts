@@ -1,14 +1,14 @@
 import AppDataSource from "../../data-source";
 import { Adress } from "../../entities/adresses.entity";
 import { Category } from "../../entities/categories.entity";
-import { Propertie } from "../../entities/properties.entity";
+import { Property } from "../../entities/properties.entity";
 import { AppError } from "../../errors/appError";
 import { IPropertyRequest } from "../../interfaces/properties";
 
 const propertiesCreateService = async (
   data: IPropertyRequest
-): Promise<Propertie> => {
-  const propertiesInfoRepository = AppDataSource.getRepository(Propertie);
+): Promise<Property> => {
+  const propertiesInfoRepository = AppDataSource.getRepository(Property);
   const adressInfoRepository = AppDataSource.getRepository(Adress);
   const categoryInfoRepository = AppDataSource.getRepository(Category);
 
@@ -41,7 +41,7 @@ const propertiesCreateService = async (
   const newAdresses = adressInfoRepository.create(data.address);
   await adressInfoRepository.save(newAdresses);
 
-  const newProperties = new Propertie();
+  const newProperties = new Property();
   newProperties.value = data.value;
   newProperties.size = data.size;
   newProperties.address = newAdresses;

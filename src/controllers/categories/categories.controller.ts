@@ -14,8 +14,12 @@ const listCategoriesController = async (req: Request, res: Response) => {
   return res.json(categories);
 };
 
-const listCategoriesIDController = async (req: Request, res: Response) => {
-  const id = req.params.id;
+const categoriesListPropertiesController = async (
+  req: Request,
+  res: Response
+) => {
+  const {id} = req.params
+
   const categories = await categoriesListProperties(id);
   return res.json(categories);
 };
@@ -23,5 +27,5 @@ const listCategoriesIDController = async (req: Request, res: Response) => {
 export {
   createCategoriesController,
   listCategoriesController,
-  listCategoriesIDController,
+  categoriesListPropertiesController,
 };

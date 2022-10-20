@@ -5,7 +5,7 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { Propertie } from "./properties.entity";
+import { Property } from "./properties.entity";
 import { User } from "./user.entity";
 
 @Entity("schedules_user_properties")
@@ -19,9 +19,9 @@ export class Schedules_user_propertie {
   @Column({ type: "time" })
   hour: string;
 
-  @ManyToOne(() => Propertie)
+  @ManyToOne(() => Property)
   @JoinColumn()
-  properties: Propertie;
+  properties: Property;
 
   @ManyToOne(() => User, { eager: true })
   @JoinColumn()

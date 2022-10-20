@@ -27,8 +27,8 @@ const userCreateService = async ({
   userRepository.create(user);
   await userRepository.save(user);
 
-  const { password: pass, ...rest } = user;
-  return rest;
+  // const { password: pass, ...rest } = user;
+  return user;
 };
 
 export default userCreateService;

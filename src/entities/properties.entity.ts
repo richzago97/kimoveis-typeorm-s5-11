@@ -14,7 +14,7 @@ import {  Category } from "./categories.entity";
 import { Schedules_user_propertie } from "./schedules_user_properties.entity";
 
 @Entity("properties")
-export class Propertie {
+export class Property {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
@@ -45,7 +45,7 @@ export class Propertie {
     }
   )
   @JoinColumn()
-  schedules_user_properties: Schedules_user_propertie[];
+  schedules: Schedules_user_propertie[];
 
   @ManyToOne(() => Category, (categories) => categories.properties, {
     eager: true,

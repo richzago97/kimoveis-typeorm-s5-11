@@ -1,5 +1,5 @@
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Propertie } from "./properties.entity";
+import { Property } from "./properties.entity";
 
 @Entity("adresses")
 export class Adress {
@@ -21,7 +21,7 @@ export class Adress {
   @Column()
   state: string;
 
-  @OneToOne(() => Propertie)
+  @OneToOne(() => Property)
   @JoinColumn()
   address: Adress;
 }

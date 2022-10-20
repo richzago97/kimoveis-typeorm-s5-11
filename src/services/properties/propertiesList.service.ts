@@ -1,8 +1,8 @@
 import AppDataSource from "../../data-source";
-import { Propertie } from "../../entities/properties.entity";
+import { Property } from "../../entities/properties.entity";
 
-const propertiesListService = async (): Promise<Propertie[]> => {
-  const propertiesRepository = AppDataSource.getRepository(Propertie);
+const propertiesListService = async (): Promise<Property[]> => {
+  const propertiesRepository = AppDataSource.getRepository(Property);
 
   const properties = await propertiesRepository.find();
 

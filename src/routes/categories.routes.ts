@@ -1,8 +1,8 @@
 import { Router } from "express";
 import {
+  categoriesListPropertiesController,
   createCategoriesController,
   listCategoriesController,
-  listCategoriesIDController,
 } from "../controllers/categories/categories.controller";
 import { authUser } from "../middlewares/authUser.middleware";
 import isAdminMiddleware from "../middlewares/isAdmin.middleware";
@@ -17,6 +17,6 @@ categoriesRouter.post(
 );
 
 categoriesRouter.get("", listCategoriesController);
-categoriesRouter.get("/:id/properties", listCategoriesIDController);
+categoriesRouter.get("/:id/properties", categoriesListPropertiesController);
 
 export default categoriesRouter;
