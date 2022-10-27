@@ -49,9 +49,8 @@ const schedulesCreateService = async (
 
   const hourNumber = parseInt(data.hour)
 
-  const getNumber = hourNumber
 
-  if (getNumber < 8 || getNumber >= 18) {
+  if (hourNumber < 8 || hourNumber >= 18) {
     throw new AppError("Schedule during business hours");
   }
 
