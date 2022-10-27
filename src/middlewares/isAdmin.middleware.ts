@@ -8,12 +8,6 @@ const isAdminMiddleware = async (
   next: NextFunction
 ) => {
   const email = req.user.email;
-  if (!email) {
-    return res.status(404).json({
-      message: "Email not found",
-    });
-  }
-
   const userRepository = AppDataSource.getRepository(User);
 
   const user = await userRepository.findOneBy({ email });
