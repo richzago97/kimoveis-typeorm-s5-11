@@ -27,12 +27,6 @@ const schedulesCreateService = async (
     throw new AppError("Not found", 404);
   }
 
-  const getHour = +data.hour.split(" : ")[0];
-
-  if (getHour < 8 || getHour >= 18) {
-    throw new AppError("Schedule during business hours");
-  }
-
   const getDay = new Date(data.date).getDay();
   if (getDay === 0 || getDay === 6) {
     throw new AppError("Schedule on weekdays");
@@ -46,10 +40,22 @@ const schedulesCreateService = async (
     throw new AppError("Schedule not found", 404);
   }
 
-  const schedule = await schedulesInfoRepository.find();
-  const scheduleExist = schedule.find((schedule) => schedule);
+  const schedule = await schedulesInfoRepository.findOne({
+    where: {
+      date: data.date,
+      hour: data.hour
+    }
+  });
 
-  if (scheduleExist) {
+  const hourNumber = parseInt(data.hour)
+
+  const getNumber = hourNumber
+
+  if (getNumber < 8 || getNumber >= 18) {
+    throw new AppError("Schedule during business hours");
+  }
+
+  if (schedule) {
     throw new AppError("Schedule already exists");
   }
 
