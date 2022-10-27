@@ -43,14 +43,14 @@ const schedulesCreateService = async (
   });
 
   if (!getProperty) {
-    throw new AppError("Category not found", 404);
+    throw new AppError("Schedule not found", 404);
   }
 
   const schedule = await schedulesInfoRepository.find();
   const scheduleExist = schedule.find((schedule) => schedule);
 
   if (scheduleExist) {
-    throw new AppError("Date or hour already exists");
+    throw new AppError("Schedule already exists");
   }
 
   const newSchedules = new Schedules_user_propertie();
