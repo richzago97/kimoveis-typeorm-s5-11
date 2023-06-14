@@ -147,6 +147,23 @@ Essas observações são importantes para garantir o correto funcionamento do pr
 
 Certifique-se de seguir as orientações adequadas com base na forma de execução escolhida: com Docker ou localmente.
 
+
+## Importando no Insomnia
+
+Caso deseje utilizar o Insomnia para testar as requisições da API, você pode importar o arquivo `workspace-e5.json` fornecido junto com a documentação. Siga as etapas abaixo para importar o workspace no Insomnia:
+
+1. Abra o Insomnia.
+
+2. Clique no botão "+ Create" na barra lateral esquerda.
+
+3. Selecione "Import/Export".
+
+4. Na janela de importação, selecione a opção "Import Data" e escolha o arquivo `workspace.json`.
+
+5. Clique em "Import" e o workspace será importado com todas as requisições pré-configuradas.
+
+Após a importação, você poderá ver as requisições no painel esquerdo do Insomnia após ter clicado em DEBUG, facilitando o teste e uso da API.
+
 ## Endpoints do serviço
 
 A seguir estão os endpoints disponíveis no serviço de gerenciamento de imobiliária:
